@@ -13,7 +13,7 @@ Java EE (v17)
 // IDE
 Eclipse EE
 ```
-
+External API from: [ipinfo.io](https://ipinfo.io)
 ___
 
 `Developed for demonstration purposes only`
