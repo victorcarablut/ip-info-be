@@ -11,6 +11,7 @@ public class IpInfoDto {
 
 	// from ipinfo
 	private String ip;
+	private String hostname;
 	private String city;
 	private String region;
 	private String country;

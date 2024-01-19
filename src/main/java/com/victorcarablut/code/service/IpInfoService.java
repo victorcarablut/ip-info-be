@@ -23,30 +23,29 @@ public class IpInfoService {
 	private String TOKEN_IP_INFO;
 
 	public IpInfoDto getDataFromIpInfo(String ip) {
-		
-		if (ip == null || ip.contains(" ") || ip.length() == 0 || ip.length() > 100
-				|| ip.isEmpty() || ip.isBlank()) {
+
+		if (ip == null || ip.contains(" ") || ip.length() == 0 || ip.length() > 100 || ip.isEmpty() || ip.isBlank()) {
 			throw new GenericException();
-		} 
+		}
 
 		// get data from the URL
 		String webUrl = "https://ipinfo.io/" + ip + "/json?token=" + TOKEN_IP_INFO;
 		URL url = null;
-		
+
 		try {
 			url = new URL(webUrl);
 		} catch (MalformedURLException e) {
 			throw new GenericException();
 		}
-		
+
 		HttpURLConnection conn = null;
-		
+
 		try {
 			conn = (HttpURLConnection) url.openConnection();
 		} catch (IOException e) {
 			throw new GenericException();
 		}
-		
+
 		try {
 			conn.setRequestMethod("GET");
 		} catch (ProtocolException e) {
@@ -54,7 +53,7 @@ public class IpInfoService {
 		}
 
 		BufferedReader buffReader = null;
-		
+
 		try {
 			buffReader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		} catch (IOException e) {
@@ -77,9 +76,9 @@ public class IpInfoService {
 
 		try {
 			ipInfo = objMap.readValue(response.toString(), IpInfoDto.class);
-			
+
 			ipInfo.setCountryFullName(findCountryFullName(ipInfo.getCountry()));
-						
+
 		} catch (JsonProcessingException e) {
 			throw new GenericException();
 		}
@@ -127,7 +126,7 @@ public class IpInfoService {
 			return "Austria";
 		case "AZ":
 			return "Azerbaijan";
-		
+
 		// B
 
 		case "BS":
@@ -153,7 +152,7 @@ public class IpInfoService {
 		case "BO":
 			return "Bolivia";
 		case "BA":
-			return "Bosnia and Herzegovina";	
+			return "Bosnia and Herzegovina";
 		case "BW":
 			return "Botswana";
 		case "BV":
@@ -161,505 +160,505 @@ public class IpInfoService {
 		case "BR":
 			return "Brazil";
 		case "VG":
-			return "British Virgin Islands";		
+			return "British Virgin Islands";
 		case "IO":
-			return "British Indian Ocean Territory";	
+			return "British Indian Ocean Territory";
 		case "BN":
-			return "Brunei Darussalam";		
+			return "Brunei Darussalam";
 		case "BG":
-			return "Bulgaria";			
+			return "Bulgaria";
 		case "BF":
-			return "Burkina Faso";			
+			return "Burkina Faso";
 		case "BI":
 			return "Burundi";
-			
+
 		// C
 
 		case "KH":
-			return "Cambodia";			
+			return "Cambodia";
 		case "CM":
-			return "Cameroon";			
+			return "Cameroon";
 		case "CA":
-			return "Canada";			
+			return "Canada";
 		case "CV":
-			return "Cape Verde";		
+			return "Cape Verde";
 		case "KY":
-			return "Cayman Islands";			
+			return "Cayman Islands";
 		case "CF":
-			return "Central African Republic";			
+			return "Central African Republic";
 		case "TD":
-			return "Chad";			
+			return "Chad";
 		case "CL":
-			return "Chile";			
+			return "Chile";
 		case "CN":
-			return "China";			
+			return "China";
 		case "HK":
-			return "Hong Kong, SAR China";			
+			return "Hong Kong, SAR China";
 		case "MO":
-			return "Macao, SAR China";			
+			return "Macao, SAR China";
 		case "CX":
-			return "Christmas Island";			
+			return "Christmas Island";
 		case "CC":
-			return "Cocos (Keeling) Islands";			
+			return "Cocos (Keeling) Islands";
 		case "CO":
-			return "Colombia";			
+			return "Colombia";
 		case "KM":
-			return "Comoros";			
+			return "Comoros";
 		case "CG":
-			return "Congo (Brazzaville)";			
+			return "Congo (Brazzaville)";
 		case "CD":
-			return "Congo, (Kinshasa)";		
+			return "Congo, (Kinshasa)";
 		case "CK":
-			return "Cook Islands";		
+			return "Cook Islands";
 		case "CR":
-			return "Costa Rica";			
+			return "Costa Rica";
 		case "CI":
-			return "Côte d'Ivoire";			
+			return "Côte d'Ivoire";
 		case "HR":
-			return "Croatia";			
+			return "Croatia";
 		case "CU":
-			return "Cuba";			
+			return "Cuba";
 		case "CY":
-			return "Cyprus";			
+			return "Cyprus";
 		case "CZ":
-			return "Czech Republic";		
+			return "Czech Republic";
 
 		// D
 
 		case "DK":
-			return "Denmark";		
+			return "Denmark";
 		case "DJ":
-			return "Djibouti";			
+			return "Djibouti";
 		case "DM":
-			return "Dominica";			
+			return "Dominica";
 		case "DO":
 			return "Dominican Republic";
-			
+
 		// E
 
 		case "EC":
-			return "Ecuador";			
+			return "Ecuador";
 		case "EG":
-			return "Egypt";		
+			return "Egypt";
 		case "SV":
-			return "El Salvador";		
+			return "El Salvador";
 		case "GQ":
-			return "Equatorial Guinea";			
+			return "Equatorial Guinea";
 		case "ER":
-			return "Eritrea";			
+			return "Eritrea";
 		case "EE":
-			return "Estonia";			
+			return "Estonia";
 		case "ET":
 			return "Ethiopia";
-			
+
 		// F
 
 		case "FK":
-			return "Falkland Islands (Malvinas)";		
+			return "Falkland Islands (Malvinas)";
 		case "FO":
-			return "Faroe Islands";			
+			return "Faroe Islands";
 		case "FJ":
-			return "Fiji";			
+			return "Fiji";
 		case "FI":
-			return "Finland";			
+			return "Finland";
 		case "FR":
-			return "France";			
+			return "France";
 		case "GF":
-			return "French Guiana";			
+			return "French Guiana";
 		case "PF":
-			return "French Polynesia";		
+			return "French Polynesia";
 		case "TF":
 			return "French Southern Territories";
-			
+
 		// G
 
 		case "GA":
-			return "Gabon";			
+			return "Gabon";
 		case "GM":
-			return "Gambia";		
+			return "Gambia";
 		case "GE":
-			return "Georgia";			
+			return "Georgia";
 		case "DE":
-			return "Germany";			
+			return "Germany";
 		case "GH":
-			return "Ghana";			
+			return "Ghana";
 		case "GI":
-			return "Gibraltar";			
+			return "Gibraltar";
 		case "GR":
-			return "Greece";			
+			return "Greece";
 		case "GL":
-			return "Greenland";			
+			return "Greenland";
 		case "GD":
-			return "Grenada";			
+			return "Grenada";
 		case "GP":
-			return "Guadeloupe";			
+			return "Guadeloupe";
 		case "GU":
-			return "Guam";			
+			return "Guam";
 		case "GT":
-			return "Guatemala";			
+			return "Guatemala";
 		case "GG":
-			return "Guernsey";			
+			return "Guernsey";
 		case "GN":
-			return "Guinea";			
+			return "Guinea";
 		case "GW":
-			return "Guinea-Bissau";			
+			return "Guinea-Bissau";
 		case "GY":
-			return "Guyana";			
+			return "Guyana";
 
 		// H
 
 		case "HT":
-			return "Haiti";			
+			return "Haiti";
 		case "HM":
-			return "Heard and Mcdonald Islands";		
+			return "Heard and Mcdonald Islands";
 		case "VA":
-			return "Holy See (Vatican City State)";			
+			return "Holy See (Vatican City State)";
 		case "HN":
-			return "Honduras";			
+			return "Honduras";
 		case "HU":
 			return "Hungary";
-			
+
 		// I
 
 		case "IS":
-			return "Iceland";			
+			return "Iceland";
 		case "IN":
-			return "India";			
+			return "India";
 		case "ID":
-			return "Indonesia";			
+			return "Indonesia";
 		case "IR":
-			return "Iran";			
+			return "Iran";
 		case "IQ":
-			return "Iraq";			
+			return "Iraq";
 		case "IE":
-			return "Ireland";			
+			return "Ireland";
 		case "IM":
 			return "Isle of Man";
 		case "IL":
 			return "Israel";
 		case "IT":
 			return "Italy";
-		
+
 		// J
 
 		case "JM":
-			return "Jamaica";			
+			return "Jamaica";
 		case "JP":
-			return "Japan";			
+			return "Japan";
 		case "JE":
-			return "Jersey";			
+			return "Jersey";
 		case "JO":
 			return "Jordan";
-			
+
 		// K
 
 		case "KZ":
-			return "Kazakhstan";			
+			return "Kazakhstan";
 		case "KE":
-			return "Kenya";		
+			return "Kenya";
 		case "KI":
-			return "Kiribati";		
+			return "Kiribati";
 		case "KP":
-			return "Korea (North)";		
+			return "Korea (North)";
 		case "KR":
-			return "Korea (South)";			
+			return "Korea (South)";
 		case "KW":
-			return "Kuwait";		
+			return "Kuwait";
 		case "KG":
 			return "Kyrgyzstan";
-			
+
 		// L
 
 		case "LA":
-			return "Lao PDR";		
+			return "Lao PDR";
 		case "LV":
-			return "Latvia";			
+			return "Latvia";
 		case "LB":
-			return "Lebanon";			
+			return "Lebanon";
 		case "LS":
-			return "Lesotho";			
+			return "Lesotho";
 		case "LR":
-			return "Liberia";			
+			return "Liberia";
 		case "LY":
-			return "Libya";		
+			return "Libya";
 		case "LI":
-			return "Liechtenstein";			
+			return "Liechtenstein";
 		case "LT":
-			return "Lithuania";			
+			return "Lithuania";
 		case "LU":
-			return "Luxembourg";		
+			return "Luxembourg";
 
 		// M
 
 		case "MK":
-			return "Macedonia";			
+			return "Macedonia";
 		case "MG":
-			return "Madagascar";			
+			return "Madagascar";
 		case "MW":
-			return "Malawi";		
+			return "Malawi";
 		case "MY":
-			return "Malaysia";			
+			return "Malaysia";
 		case "MV":
-			return "Maldives";		
+			return "Maldives";
 		case "ML":
-			return "Mali";		
+			return "Mali";
 		case "MT":
-			return "Malta";			
+			return "Malta";
 		case "MH":
-			return "Marshall Islands";			
+			return "Marshall Islands";
 		case "MQ":
-			return "Martinique";			
+			return "Martinique";
 		case "MR":
-			return "Mauritania";			
+			return "Mauritania";
 		case "MU":
-			return "Mauritius";			
+			return "Mauritius";
 		case "YT":
-			return "Mayotte";			
+			return "Mayotte";
 		case "MX":
-			return "Mexico";			
+			return "Mexico";
 		case "FM":
-			return "Micronesia";			
+			return "Micronesia";
 		case "MD":
-			return "Moldova";			
+			return "Moldova";
 		case "MC":
-			return "Monaco";			
+			return "Monaco";
 		case "MN":
-			return "Mongolia";			
+			return "Mongolia";
 		case "ME":
-			return "Montenegro";			
+			return "Montenegro";
 		case "MS":
-			return "Montserrat";			
+			return "Montserrat";
 		case "MA":
-			return "Morocco";			
+			return "Morocco";
 		case "MZ":
-			return "Mozambique";			
+			return "Mozambique";
 		case "MM":
 			return "Myanmar";
-			
+
 		// N
 
 		case "NA":
-			return "Namibia";			
+			return "Namibia";
 		case "NR":
-			return "Nauru";			
+			return "Nauru";
 		case "NP":
-			return "Nepal";			
+			return "Nepal";
 		case "NL":
-			return "Netherlands";			
+			return "Netherlands";
 		case "AN":
-			return "Netherlands Antilles";			
+			return "Netherlands Antilles";
 		case "NC":
-			return "New Caledonia";			
+			return "New Caledonia";
 		case "NZ":
-			return "New Zealand";			
+			return "New Zealand";
 		case "NI":
-			return "Nicaragua";			
+			return "Nicaragua";
 		case "NE":
-			return "Niger";			
+			return "Niger";
 		case "NG":
-			return "Nigeria";			
+			return "Nigeria";
 		case "NU":
-			return "Niue";			
+			return "Niue";
 		case "NF":
-			return "Norfolk Island";			
+			return "Norfolk Island";
 		case "MP":
-			return "Northern Mariana Islands";		
+			return "Northern Mariana Islands";
 		case "NO":
 			return "Norway";
-			
+
 		// O
 
 		case "OM":
 			return "Oman";
-			
+
 		// P
 
 		case "PK":
-			return "Pakistan";		
+			return "Pakistan";
 		case "PW":
-			return "Palau";			
+			return "Palau";
 		case "PS":
-			return "Palestinian Territory";			
+			return "Palestinian Territory";
 		case "PA":
-			return "Panama";			
+			return "Panama";
 		case "PG":
-			return "Papua New Guinea";			
+			return "Papua New Guinea";
 		case "PY":
-			return "Paraguay";			
+			return "Paraguay";
 		case "PE":
-			return "Peru";			
+			return "Peru";
 		case "PH":
-			return "Philippines";			
+			return "Philippines";
 		case "PL":
-			return "Poland";			
+			return "Poland";
 		case "PT":
-			return "Portugal";			
+			return "Portugal";
 		case "PR":
-			return "Puerto Rico";			
+			return "Puerto Rico";
 
 		// Q
 
 		case "QA":
 			return "Qatar";
-			
+
 		// R
 
 		case "RE":
-			return "Réunion";			
+			return "Réunion";
 		case "RO":
-			return "Romania";			
+			return "Romania";
 		case "RU":
-			return "Russia";			
+			return "Russia";
 		case "RW":
 			return "Rwanda";
-			
+
 		// S
 
 		case "BL":
-			return "Saint-Barthélemy";			
+			return "Saint-Barthélemy";
 		case "SH":
-			return "Saint Helena";			
+			return "Saint Helena";
 		case "KN":
-			return "Saint Kitts and Nevis";		
+			return "Saint Kitts and Nevis";
 		case "LC":
-			return "Saint Lucia";			
+			return "Saint Lucia";
 		case "MF":
-			return "Saint-Martin";			
+			return "Saint-Martin";
 		case "PM":
-			return "Saint Pierre and Miquelon";			
+			return "Saint Pierre and Miquelon";
 		case "VC":
-			return "Saint Vincent and Grenadines";			
+			return "Saint Vincent and Grenadines";
 		case "WS":
-			return "Samoa";			
+			return "Samoa";
 		case "SM":
-			return "San Marino";			
+			return "San Marino";
 		case "ST":
-			return "Sao Tome and Principe";			
+			return "Sao Tome and Principe";
 		case "SA":
-			return "Saudi Arabia";			
+			return "Saudi Arabia";
 		case "SN":
-			return "Senegal";		
+			return "Senegal";
 		case "RS":
-			return "Serbia";			
+			return "Serbia";
 		case "SC":
-			return "Seychelles";			
+			return "Seychelles";
 		case "SL":
-			return "Sierra Leone";			
+			return "Sierra Leone";
 		case "SG":
-			return "Singapore";		
+			return "Singapore";
 		case "SK":
-			return "Slovakia";			
+			return "Slovakia";
 		case "SI":
-			return "Slovenia";			
+			return "Slovenia";
 		case "SB":
-			return "Solomon Islands";			
+			return "Solomon Islands";
 		case "SO":
-			return "Somalia";		
+			return "Somalia";
 		case "ZA":
-			return "South Africa";			
+			return "South Africa";
 		case "GS":
-			return "South Georgia and the South Sandwich Islands";			
+			return "South Georgia and the South Sandwich Islands";
 		case "SS":
-			return "South Sudan";			
+			return "South Sudan";
 		case "ES":
-			return "Spain";			
+			return "Spain";
 		case "LK":
-			return "Sri Lanka";		
+			return "Sri Lanka";
 		case "SD":
-			return "Sudan";			
+			return "Sudan";
 		case "SR":
-			return "Suriname";			
+			return "Suriname";
 		case "SJ":
-			return "Svalbard and Jan Mayen Islands";			
+			return "Svalbard and Jan Mayen Islands";
 		case "SZ":
-			return "Swaziland";			
+			return "Swaziland";
 		case "SE":
-			return "Sweden";			
+			return "Sweden";
 		case "CH":
-			return "Switzerland";		
+			return "Switzerland";
 		case "SY":
 			return "Syria";
-			
+
 		// T
 
 		case "TW":
-			return "Taiwan";			
+			return "Taiwan";
 		case "TJ":
-			return "Tajikistan";			
+			return "Tajikistan";
 		case "TZ":
-			return "Tanzania";			
+			return "Tanzania";
 		case "TH":
-			return "Thailand";			
+			return "Thailand";
 		case "TL":
-			return "Timor-Leste";			
+			return "Timor-Leste";
 		case "TG":
-			return "Togo";			
+			return "Togo";
 		case "TK":
-			return "Tokelau";			
+			return "Tokelau";
 		case "TO":
-			return "Tonga";			
+			return "Tonga";
 		case "TT":
-			return "Trinidad and Tobago";			
+			return "Trinidad and Tobago";
 		case "TN":
-			return "Tunisia";			
+			return "Tunisia";
 		case "TR":
-			return "Turkey";			
+			return "Turkey";
 		case "TM":
-			return "Turkmenistan";			
+			return "Turkmenistan";
 		case "TC":
-			return "Turks and Caicos Islands";			
+			return "Turks and Caicos Islands";
 		case "TV":
-			return "Tuvalu";			
+			return "Tuvalu";
 
 		// U
 
 		case "UG":
-			return "Uganda";			
+			return "Uganda";
 		case "UA":
-			return "Ukraine";			
+			return "Ukraine";
 		case "AE":
-			return "United Arab Emirates";		
+			return "United Arab Emirates";
 		case "GB":
-			return "United Kingdom";		
+			return "United Kingdom";
 		case "US":
-			return "United States";			
+			return "United States";
 		case "UM":
-			return "US Minor Outlying Islands";			
+			return "US Minor Outlying Islands";
 		case "UY":
-			return "Uruguay";			
+			return "Uruguay";
 		case "UZ":
 			return "Uzbekistan";
-			
+
 		// V
 
 		case "VU":
-			return "Vanuatu";			
+			return "Vanuatu";
 		case "VE":
-			return "Venezuela";			
+			return "Venezuela";
 		case "VN":
-			return "Viet Nam";		
+			return "Viet Nam";
 		case "VI":
 			return "Virgin Islands, US";
-			
+
 		// W
 
 		case "WF":
-			return "Wallis and Futuna Islands";		
+			return "Wallis and Futuna Islands";
 		case "EH":
 			return "Western Sahara";
-			
+
 		// Y-Z
 
 		case "YE":
-			return "Yemen";			
+			return "Yemen";
 		case "ZM":
-			return "Zambia";			
+			return "Zambia";
 		case "ZW":
 			return "Zimbabwe";
-						
+
 		default:
 			return null;
-		}		
+		}
 	}
 
 }
