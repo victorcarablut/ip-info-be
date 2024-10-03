@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "token.ip.info",
+    "type": "java.lang.String",
+    "description": "A description for 'token.ip.info'"
+  },
+  {
+    "name": "url.fe.cross.origin",
+    "type": "java.lang.String",
+    "description": "A description for 'url.fe.cross.origin'"
+  }
+]}
