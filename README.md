@@ -8,12 +8,12 @@
 - Spring Boot <sup>v3<sup>
 - Lombok
 
-<strong>IDE</strong> <sup>(i used)</sup>
+<strong>IDE</strong> _(i used)_
 - Eclipse EE
 
 <strong>Other</strong>
-- external API [ipinfo.io](https://ipinfo.io) <sup>Free</sup>
-- external API [openweathermap.org](https://openweathermap.org) <sup>Free</sup>
+- external API [ipinfo.io](https://ipinfo.io) _Free_
+- external API [openweathermap.org](https://openweathermap.org) _Free_
 
 ## Getting started
 
@@ -41,7 +41,7 @@
 > Copying part of source code is allowed and you're free to integrate in your personal/commercial projects with any restrictions.
 > Attribution is not required but always appreciated.
 > 
-> ❌ Don't sell, publish or distribute as yours without modifying it, be creative. <sup>(referring to the hole project)</sup>
+> ❌ Don't sell, publish or distribute as yours without modifying it, be creative. _(referring to the hole project)_
 > 
 > 
 > 📜 <strong>License</strong> _(all other third party resources, technologies, languages, frameworks and libraries that i used)_
