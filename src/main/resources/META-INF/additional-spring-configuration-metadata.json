@@ -8,5 +8,10 @@
     "name": "url.fe.cross.origin",
     "type": "java.lang.String",
     "description": "A description for 'url.fe.cross.origin'"
+  },
+  {
+    "name": "token.open.weather",
+    "type": "java.lang.String",
+    "description": "A description for 'token.open.weather'"
   }
 ]}

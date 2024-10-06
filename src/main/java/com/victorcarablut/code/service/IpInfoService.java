@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.victorcarablut.code.dto.IpInfoDto;
+import com.victorcarablut.code.dto.IpInfoResponseDto;
 import com.victorcarablut.code.exceptions.ApiUsageLimitException;
 import com.victorcarablut.code.exceptions.GenericException;
 import com.victorcarablut.code.exceptions.InvalidInputException;
@@ -27,15 +27,15 @@ public class IpInfoService {
 	@Value("${token.ip.info}")
 	private String TOKEN_IP_INFO;
 
-	public IpInfoDto getDataFromIpInfo(String ip) {
+	public IpInfoResponseDto getDataFromIpInfo(String ip) {
 
-		// validating IP input
+		// validating input
 		if (ip == null || ip.contains(" ") || ip.length() == 0 || ip.length() > 50 || ip.isEmpty() || ip.isBlank()) {
 			throw new InvalidInputException();
 		}
 
-		// get data from the URL
-		// // https://ipinfo.io/developers/data-types#geolocation-data
+		// get data from the API URL (Free Plan)
+		// Doc. https://ipinfo.io/developers/data-types#geolocation-data
 		String webUrl = "https://ipinfo.io/" + ip + "/json?token=" + TOKEN_IP_INFO;
 		URL url = null;
 
@@ -84,15 +84,11 @@ public class IpInfoService {
 			throw new GenericException();
 		}
 
-		ObjectMapper objMapper = new ObjectMapper();
-		IpInfoDto ipInfo = new IpInfoDto();
-
-		// World countries (full names, flags)
-		// downloaded from: https://stefangabos.github.io/world_countries
-
-		// unix / , windows \
+		// unix /
+		// windows \
 		String separator = File.separator;
 
+		// downloaded from: https://stefangabos.github.io/world_countries
 		String file_countries_fullname = "world-countries" + separator + "countries" + separator + "en" + separator
 				+ "world.json";
 		String file_countries_flag = "world-countries" + separator + "flags" + separator + "64x64" + separator
@@ -103,9 +99,12 @@ public class IpInfoService {
 		String file_countries_currency_code = "world-countries" + separator + "currency-code" + separator
 				+ "currency.json";
 		String file_countries_phone_code = "world-countries" + separator + "phone-code" + separator + "phone.json";
+		
+		ObjectMapper objMapper = new ObjectMapper();
+		IpInfoResponseDto ipInfo = new IpInfoResponseDto();
 
 		try {
-			ipInfo = objMapper.readValue(response.toString(), IpInfoDto.class);
+			ipInfo = objMapper.readValue(response.toString(), IpInfoResponseDto.class);
 
 			if (ipInfo.getCountry() != null) {
 
@@ -147,7 +146,6 @@ public class IpInfoService {
 
 				ipInfo.setLat(lat);
 				ipInfo.setLng(lng);
-
 			}
 
 		} catch (JsonProcessingException e) {
@@ -156,8 +154,8 @@ public class IpInfoService {
 			throw new GenericException();
 		}
 
+		// return the final customized json response 
 		return ipInfo;
-
 	}
 
 }

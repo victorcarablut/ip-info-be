@@ -9,29 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.victorcarablut.code.dto.IpInfoResponseDto;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.victorcarablut.code.dto.OpenWeatherRequestDto;
 import com.victorcarablut.code.exceptions.ApiUsageLimitException;
 import com.victorcarablut.code.exceptions.GenericException;
 import com.victorcarablut.code.exceptions.InvalidInputException;
-import com.victorcarablut.code.service.IpInfoService;
+import com.victorcarablut.code.service.OpenWeatherService;
 
 import lombok.RequiredArgsConstructor;
 
 @CrossOrigin(origins = "${url.fe.cross.origin}")
 @RestController
-@RequestMapping("/api/ip")
+@RequestMapping("/api/weather")
 @RequiredArgsConstructor
-public class IpInfoController {
+public class OpenWeatherController {
 
-	private final IpInfoService ipInfoService;
-	
+	private final OpenWeatherService openWeatherService;
+
 	// Custom exceptions response
 	@ExceptionHandler({ GenericException.class })
 	public ResponseEntity<String> handleGenericException() {
 		final String message = "Error";
 		return new ResponseEntity<String>(message, HttpStatus.BAD_REQUEST);
 	}
-	
+
 	@ExceptionHandler({ InvalidInputException.class })
 	public ResponseEntity<String> handleInvalidInputException() {
 		final String message = "Invalid Input";
@@ -40,12 +41,14 @@ public class IpInfoController {
 	
 	@ExceptionHandler({ ApiUsageLimitException.class })
 	public ResponseEntity<String> handleApiUsageLimitException() {
-		final String message = "Free usage of API is limited to 50,000 requests per month.";
+		final String message = "Free usage of API is limited to 60 calls/minute and 1,000,000 calls/month.";
 		return new ResponseEntity<String>(message, HttpStatus.TOO_MANY_REQUESTS);
 	}
-	
+
 	@PostMapping("/info")
-	public IpInfoResponseDto getIpInfo(@RequestBody IpInfoResponseDto ipInfo) {
-		return ipInfoService.getDataFromIpInfo(ipInfo.getIp());
+	public JsonNode getWeatherInfo(@RequestBody OpenWeatherRequestDto openWeather) {
+		return openWeatherService.getDataFromOpenWeather(openWeather.getLat(), openWeather.getLon(),
+				openWeather.getUnits(), openWeather.getLang());
 	}
+
 }
