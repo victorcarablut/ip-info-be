@@ -34,7 +34,8 @@
 > 📄 It's just a demo project.
 > 
 > 🌐 [code.victorcarablut.com](https://code.victorcarablut.com)
-> 
+
+> [!NOTE]
 > 📜 <strong>License</strong> _(my own source code)_
 > 
 > ✔️ Free to use, copy, modify and share.
