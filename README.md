@@ -12,8 +12,8 @@
 - Eclipse EE
 
 <strong>Other</strong>
-- external API [ipinfo.io](https://ipinfo.io) _Free_
-- external API [openweathermap.org](https://openweathermap.org) _Free_
+- Free external API [ipinfo.io](https://ipinfo.io)
+- Free external API [openweathermap.org](https://openweathermap.org)
 
 ## Getting started
 
@@ -49,9 +49,9 @@
 > ⚠️ Please verify their own respective license, terms and conditions.
 
 > [!WARNING]
-> 👩🏻‍💻 I'm always looking for best practices solutions but still learning so please keep in mind that the project is provided as it is without any warranty and there might be bugs or incorrect way to write code in terms of security.
+> I'm always looking for best practices solutions but still learning so please keep in mind that the project is provided as it is without any warranty and there might be bugs or incorrect way to write code in terms of security.
 > 
-> 💡Suggestion to improve the project are accepted. ✉️ <a href="mailto:contact@ip-info-demo.victorcarablut.com">contact@ip-info-demo.victorcarablut.com</a>
+> 💡Suggestion to improve the project are accepted. ✉️ <a href="mailto:contact@ip-info-demo.victorcarablut.com">Send Email</a>
 
 ---
 
