@@ -53,11 +53,3 @@
 
 > [!WARNING]
 > I'm always looking for best practices solutions but still learning so please keep in mind that the project is provided as it is without any warranty and there might be bugs or incorrect way to write code in terms of security.
-
----
-
-![GitHub stars](https://img.shields.io/github/stars/victorcarablut/ip-info-be?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/victorcarablut/ip-info-be?style=social)
-![GitHub repo size](https://img.shields.io/github/repo-size/victorcarablut/ip-info-be)
-![GitHub last commit](https://img.shields.io/github/last-commit/victorcarablut/ip-info-be)
-
