@@ -39,7 +39,7 @@
 > Copying part of source code is allowed and you're free to integrate in your personal/commercial projects without any restriction.
 > Attribution is not required but always appreciated.
 > 
-> ❌ Don't sell, publish or distribute as yours without modifying it, be creative. _(referring to the hole project)_
+> ❌ Don't sell, publish or distribute as yours without modifying it, be creative. _(referring to the whole project)_
 > 
 > _(all other third party resources, technologies, languages, frameworks and libraries that i used)_
 > 
