@@ -31,23 +31,17 @@
 > ```
 
 > [!NOTE]
-> 📄 It's just a demo project.
-> 
-> 🌐 [code.victorcarablut.com](https://code.victorcarablut.com)
-> 
-> 💡Suggestion to improve the project are accepted. ✉️ <a href="mailto:contact@ip-info-demo.victorcarablut.com">Send Email</a>
-
-> [!NOTE]
-> 📜 <strong>License</strong> _(my own source code)_
+> 📜 <strong>License</strong>
+>
+> _(my own source code)_
 > 
 > ✔️ Free to use, copy, modify and share.
-> Copying part of source code is allowed and you're free to integrate in your personal/commercial projects with any restrictions.
+> Copying part of source code is allowed and you're free to integrate in your personal/commercial projects without any restriction.
 > Attribution is not required but always appreciated.
 > 
 > ❌ Don't sell, publish or distribute as yours without modifying it, be creative. _(referring to the hole project)_
 > 
-> 
-> 📜 <strong>License</strong> _(all other third party resources, technologies, languages, frameworks and libraries that i used)_
+> _(all other third party resources, technologies, languages, frameworks and libraries that i used)_
 > 
 > ⚠️ Please verify their own respective license, terms and conditions.
 
